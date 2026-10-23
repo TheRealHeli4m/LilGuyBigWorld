@@ -87,3 +87,31 @@ autoplay = "Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=941323162]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_cqgho")
+
+[node name="JumpBuffering" type="Timer" parent="." unique_id=2064193373]
+wait_time = 0.1
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=164373582]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpHeightTimer" type="Timer" parent="." unique_id=1483434659]
+wait_time = 0.1
+one_shot = true
+
+[node name="LeftOuterRC" type="RayCast2D" parent="." unique_id=452657963]
+position = Vector2(-4, 2)
+target_position = Vector2(0, -6)
+
+[node name="RightOuterRC" type="RayCast2D" parent="." unique_id=278704453]
+position = Vector2(4, 2)
+target_position = Vector2(0, -6)
+
+[node name="LeftInnerRC" type="RayCast2D" parent="." unique_id=299746300]
+position = Vector2(-1, 2)
+target_position = Vector2(0, -6)
+
+[node name="RightInnerRC" type="RayCast2D" parent="." unique_id=804388334]
+position = Vector2(1, 2)
+target_position = Vector2(0, -6)
