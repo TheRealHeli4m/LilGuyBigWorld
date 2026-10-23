@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlqqsdf8f5v2" path="res://Scripts/little_guy.gd" id="1_4lbe5"]
 [ext_resource type="Texture2D" uid="uid://bjlyccw3a3cri" path="res://Assets/sprites/knight.png" id="2_p2ue5"]
+[ext_resource type="Script" uid="uid://ckveb0cry1wxe" path="res://Scripts/player_animations.gd" id="3_p2ue5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcms7"]
 atlas = ExtResource("2_p2ue5")
@@ -70,7 +71,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"Squash",
-"speed": 20.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqgho"]
@@ -83,6 +84,9 @@ script = ExtResource("1_4lbe5")
 sprite_frames = SubResource("SpriteFrames_cqgho")
 animation = &"Squash"
 autoplay = "Idle"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("3_p2ue5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=941323162]
 position = Vector2(0, 4)
