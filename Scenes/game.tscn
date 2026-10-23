@@ -211,6 +211,6 @@ text = "Settings
 [node name="Quit" type="Button" parent="PauseMenu/VBoxContainer" unique_id=671311646]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_cd33c")
-text = "Quit"
+text = "Return to Main Menu"
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="PauseMenu/Bg" method="_on_resume_pressed"]
