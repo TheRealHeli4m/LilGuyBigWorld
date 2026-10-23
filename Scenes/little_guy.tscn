@@ -30,3 +30,11 @@ sprite_frames = SubResource("SpriteFrames_cqgho")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=941323162]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_cqgho")
+
+[node name="JumpBuffering" type="Timer" parent="." unique_id=2064193373]
+wait_time = 0.1
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=164373582]
+wait_time = 0.1
+one_shot = true
