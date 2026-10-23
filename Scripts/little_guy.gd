@@ -33,4 +33,5 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	was_on_floor = is_on_floor()
-	move_and_slide()
+	if Global.playerCanMove: # check out global.gd 
+		move_and_slide()
