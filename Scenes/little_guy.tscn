@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ci2yoqda0kved"]
+
+[ext_resource type="Script" uid="uid://dlqqsdf8f5v2" path="res://Scripts/little_guy.gd" id="1_4lbe5"]
+[ext_resource type="Texture2D" uid="uid://bjlyccw3a3cri" path="res://Assets/sprites/knight.png" id="2_p2ue5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcms7"]
+atlas = ExtResource("2_p2ue5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqgho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcms7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqgho"]
+size = Vector2(8, 12)
+
+[node name="LittleGuy" type="CharacterBody2D" unique_id=1827910594]
+script = ExtResource("1_4lbe5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=842026339]
+sprite_frames = SubResource("SpriteFrames_cqgho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=941323162]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_cqgho")
