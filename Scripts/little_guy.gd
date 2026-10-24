@@ -42,6 +42,9 @@ func _physics_process(delta: float) -> void:
 
 	if (Input.is_action_just_pressed("jump") or !jBuffTimer.is_stopped()) and (canJump or !coyoteTimer.is_stopped()):
 		jumpTimer.start()
+		velocity.y = JUMP_VELOCITY
+		canJump = false
+		coyoteTimer.stop()
 >>>>>>> d965f558583768c1a57d15cb75a924a40aaa6bfe
 		velocity.y = JUMP_VELOCITY
 		canJump = false
@@ -63,7 +66,7 @@ if !leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_coll
 	
 	if direction == 0:
 		if is_on_floor():
-			animated_sprite.play("idle")
+			animated_sprite.play("Idle")
 		else:
 			animated_sprite.play("Jump")
 	else:

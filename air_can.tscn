@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bxnixtbrabwwv"]
+
+[ext_resource type="Script" uid="uid://di4euwfwk4123" path="res://Scripts/air_can.gd" id="1_dtd5v"]
+
+[node name="AirCan" type="Area2D" unique_id=1130188088]
+script = ExtResource("1_dtd5v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=271830832]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1668028251]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
