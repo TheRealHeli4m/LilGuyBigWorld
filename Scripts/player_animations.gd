@@ -14,11 +14,11 @@ func _process(delta: float) -> void:
 		# need to add a delay here so animation actually plays
 		# a big reason why squash isnt playing is because the other animations are overriding it the next frame
 		
-	if self.is_playing() and self.animation == "Squash": return;	
-	if player.direction == 0:
+	if self.is_playing() and self.animation == "Squash": return; # this is called a guard clause and i rlly like to use this so i hope you get used to seeing this :)))
+	if player.direction == 0: 
 		if player.is_on_floor():
 			self.play("Idle")
-		else:
+		else: 
 			self.play("Jump")
 	else:
 		self.play("Run")
