@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://sghsfwiyhmav"]
+
+[ext_resource type="Texture2D" uid="uid://vvldmrhtsehb" path="res://icon.svg" id="1_ka4py"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cd33c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ka4py")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd33c"]
+size = Vector2(126, 126)
+
+[node name="Spring" type="Node2D" unique_id=558907594]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=912334520]
+sprite_frames = SubResource("SpriteFrames_cd33c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2092617884]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1565052909]
+shape = SubResource("RectangleShape2D_cd33c")
