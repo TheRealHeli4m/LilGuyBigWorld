@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://xj703g0kiwa4"]
 
 [ext_resource type="PackedScene" uid="uid://ci2yoqda0kved" path="res://Scenes/little_guy.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://njdibrl2nvwm" path="res://Scenes/game_manager.tscn" id="1_wowpa"]
 [ext_resource type="Texture2D" uid="uid://d4aai8de543m0" path="res://Assets/sprites/world_tileset.png" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://hwf12e5a0c3f" path="res://Scenes/killzone.tscn" id="3_wrm1d"]
 [ext_resource type="Script" uid="uid://dtuh8twxmhagj" path="res://Scripts/pause_menu_bg.gd" id="4_3dryh"]
@@ -151,6 +152,9 @@ content_margin_bottom = 25.0
 bg_color = Color(0.08274146, 0.08274145, 0.0827414, 1)
 
 [node name="Game" type="Node2D" unique_id=873701970]
+
+[node name="GameManager" parent="." unique_id=1534931396 instance=ExtResource("1_wowpa")]
+unique_name_in_owner = true
 
 [node name="LittleGuy" parent="." unique_id=1827910594 instance=ExtResource("1_ebmjs")]
 

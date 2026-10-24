@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 <<<<<<< HEAD
 # these two constants are for an idea to try where as our little guy gets bigger, his velocity decreases
-const FORCE = 300
-const MASS = 1
+var FORCE = 300
+var MASS = 1
 
-const SPEED = FORCE/MASS
-const JUMP_VELOCITY = -FORCE/MASS
+var SPEED = FORCE/MASS
+var JUMP_VELOCITY = -FORCE/MASS
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var coyoteTimer = $CoyoteTimer
@@ -87,3 +87,6 @@ if !leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_coll
 	was_on_floor = is_on_floor()
 	if Global.playerCanMove: # check out global.gd 
 		move_and_slide()
+
+func air_can():
+	FORCE += 300
