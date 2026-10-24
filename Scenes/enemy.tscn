@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ldsquq2ok4u6"]
+
+[ext_resource type="Script" uid="uid://715o4a2uq18r" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="PackedScene" uid="uid://hwf12e5a0c3f" path="res://Scenes/killzone.tscn" id="2_afpow"]
+
+[node name="Enemy" type="Node2D" unique_id=1119109754]
+script = ExtResource("1_1f0kj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=455070753]
+
+[node name="Killzone" parent="." unique_id=495490622 instance=ExtResource("2_afpow")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1064500840]
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1734203644]
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=497543276]

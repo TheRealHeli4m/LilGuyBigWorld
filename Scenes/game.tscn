@@ -155,6 +155,7 @@ bg_color = Color(0.08274146, 0.08274145, 0.0827414, 1)
 [node name="LittleGuy" parent="." unique_id=1827910594 instance=ExtResource("1_ebmjs")]
 
 [node name="Camera2D" type="Camera2D" parent="LittleGuy" unique_id=704258411]
+position = Vector2(1, 0)
 zoom = Vector2(5, 5)
 limit_smoothed = true
 position_smoothing_enabled = true

@@ -9,26 +9,6 @@ const SPEED = FORCE/MASS
 const JUMP_VELOCITY = -FORCE/MASS
 
 @onready var animated_sprite = $AnimatedSprite2D
-
-# this will be used to squash our character when they hit a surface
-var was_in_air = false
-
-func _physics_process(delta: float) -> void:	
-	# Add the gravity.
-	if not is_on_floor():
-		was_in_air = true
-		velocity += get_gravity() * delta
-		
-	if is_on_floor():
-		if was_in_air:
-			animated_sprite.play("Squash")
-			# need to add a delay here so animation actually plays
-			was_in_air = false
-		else:
-			pass	
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-=======
 @onready var coyoteTimer = $CoyoteTimer
 @onready var jBuffTimer = $JumpBuffering
 @onready var jumpTimer = $JumpHeightTimer
@@ -37,18 +17,22 @@ func _physics_process(delta: float) -> void:
 @onready var leftInRC = $LeftInnerRC
 @onready var rightInRC = $RightInnerRC
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -300.0
-
 var was_on_floor: bool
 var canJump: bool
+# this will be used to squash our character when they hit a surface
+var was_in_air = false
 
 # i think there MIGHT be something redundant in here but it works so im not gonna fix it for now
 func _physics_process(delta: float) -> void:	
-	if is_on_floor(): canJump = true 
+	if is_on_floor(): 
+		canJump = true 
+		if was_in_air:
+			animated_sprite.play("Squash")
+			was_in_air = false
 	if not is_on_floor(): 
 		velocity += get_gravity() * delta # gravity
 		canJump = false
+		was_in_air = true
 	
 	if was_on_floor and !is_on_floor() and velocity.y > 0: 
 		coyoteTimer.start()
@@ -63,14 +47,14 @@ func _physics_process(delta: float) -> void:
 		canJump = false
 		coyoteTimer.stop()
 		
-	if jumpTimer.is_stopped() and !Input.is_action_pressed("jump"):
-		if velocity.y < 0:
-			velocity.y *= 0.75
+if jumpTimer.is_stopped() and !Input.is_action_pressed("jump"):
+	if velocity.y < 0:
+		velocity.y *= 0.75
 			
-	if leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_colliding() and !rightOutRC.is_colliding():
-		self.global_position.x += 5
-	if !leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_colliding() and rightOutRC.is_colliding():
-		self.global_position.x -= 5
+if leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_colliding() and !rightOutRC.is_colliding():
+	self.global_position.x += 5
+if !leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_colliding() and rightOutRC.is_colliding():
+	self.global_position.x -= 5
 
 <<<<<<< HEAD
 	# Get the input direction and handle the movement/deceleration.
