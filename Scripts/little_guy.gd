@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # these two constants are for an idea to try where as our little guy gets bigger, his velocity decreases
-const FORCE = 300
-const MASS = 1.5
+const FORCE = 2000
+const MASS = 2
 
 const SPEED = FORCE/MASS
 const JUMP_VELOCITY = -FORCE/MASS
@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 		
 	if jumpTimer.is_stopped() and !Input.is_action_pressed("jump"):
 		if velocity.y < 0:
-			velocity.y *= 0.5
+			velocity.y *= 0.75
 			
 	if leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_colliding() and !rightOutRC.is_colliding():
 		self.global_position.x += 5
@@ -72,9 +72,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
 		var dashDirection = Input.get_vector("move_left", "move_right", "up", "down")
 		if not dashDirection: return
-		velocity = dashDirection * SPEED * 1.5
+		velocity = dashDirection * SPEED * 1.4
 		isDashing = true
-		camera.screenShake(2, 0.3)
+		camera.screenShake(5, 0.3)
 		
 		await get_tree().create_timer(0.2).timeout
 		isDashing = false
