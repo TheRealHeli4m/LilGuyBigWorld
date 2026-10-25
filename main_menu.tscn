@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b7makj3y0fap0"]
+
+[ext_resource type="Texture2D" uid="uid://dr3o00ajwrsw8" path="res://Assets/main_menu_bg.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dstnkak3if3tl" path="res://main_menu.gd" id="1_7vrkn"]
+
+[node name="Main Menu" type="Node2D" unique_id=688318407]
+script = ExtResource("1_7vrkn")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=26413726]
+position = Vector2(640, 371)
+scale = Vector2(4, 4)
+texture = ExtResource("1_06t4h")
+
+[node name="Button" type="Button" parent="." unique_id=804594184]
+offset_left = 96.0
+offset_top = 390.0
+offset_right = 137.0
+offset_bottom = 421.0
+text = "Play
+"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=622122339]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=672614239]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

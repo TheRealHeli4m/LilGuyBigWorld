@@ -1,12 +1,8 @@
 extends CharacterBody2D
 
-<<<<<<< HEAD
 # these two constants are for an idea to try where as our little guy gets bigger, his velocity decreases
-var FORCE = 300
-var MASS = 1
-
-var SPEED = FORCE/MASS
-var JUMP_VELOCITY = -FORCE/MASS
+var FORCE = 1750
+var MASS = 2
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var coyoteTimer = $CoyoteTimer
@@ -19,11 +15,15 @@ var JUMP_VELOCITY = -FORCE/MASS
 
 var was_on_floor: bool
 var canJump: bool
+var direction: float
 # this will be used to squash our character when they hit a surface
 var was_in_air = false
 
 # i think there MIGHT be something redundant in here but it works so im not gonna fix it for now
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
+	var SPEED = FORCE/MASS
+	var JUMP_VELOCITY = -FORCE/MASS * 0.75
+		
 	if is_on_floor(): 
 		canJump = true 
 		if was_in_air:
@@ -45,48 +45,31 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		canJump = false
 		coyoteTimer.stop()
->>>>>>> d965f558583768c1a57d15cb75a924a40aaa6bfe
 		velocity.y = JUMP_VELOCITY
 		canJump = false
 		coyoteTimer.stop()
 		
-if jumpTimer.is_stopped() and !Input.is_action_pressed("jump"):
-	if velocity.y < 0:
-		velocity.y *= 0.75
-			
-if leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_colliding() and !rightOutRC.is_colliding():
-	self.global_position.x += 5
-if !leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_colliding() and rightOutRC.is_colliding():
-	self.global_position.x -= 5
+	if jumpTimer.is_stopped() and !Input.is_action_pressed("jump"):
+		if velocity.y < 0:
+			velocity.y *= 0.75
+				
+	if leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_colliding() and !rightOutRC.is_colliding():
+		self.global_position.x += 5
+	if !leftOutRC.is_colliding() and !leftInRC.is_colliding() and !rightInRC.is_colliding() and rightOutRC.is_colliding():
+		self.global_position.x -= 5
+		
+	direction = Input.get_axis("move_left", "move_right")
 
-<<<<<<< HEAD
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	
-	if direction == 0:
-		if is_on_floor():
-			animated_sprite.play("Idle")
-		else:
-			animated_sprite.play("Jump")
-	else:
-		animated_sprite.play("Run")
-		if direction > 0:
-			animated_sprite.flip_h = false
-		elif direction < 0:
-			animated_sprite.flip_h = true
-	
-=======
-	var direction := Input.get_axis("move_left", "move_right")
->>>>>>> d965f558583768c1a57d15cb75a924a40aaa6bfe
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	FORCE = move_toward(FORCE, 1750, 500 * get_process_delta_time())
 	
 	was_on_floor = is_on_floor()
 	if Global.playerCanMove: # check out global.gd 
 		move_and_slide()
 
 func air_can():
-	FORCE += 300
+	FORCE += 2000

@@ -27,3 +27,7 @@ func togglePauseMenu(isOpening: bool) -> void:
 	
 	Global.playerCanMove = false if isOpening else true
 	isPauseMenuOpen = true if isOpening else false
+
+
+func _on_quit_pressed() -> void:
+	get_tree().change_scene_to_file("res://main_menu.tscn")

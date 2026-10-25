@@ -1,17 +1,34 @@
 [gd_scene format=3 uid="uid://bxnixtbrabwwv"]
 
 [ext_resource type="Script" uid="uid://di4euwfwk4123" path="res://Scripts/air_can.gd" id="1_kuw68"]
+[ext_resource type="Texture2D" uid="uid://vvldmrhtsehb" path="res://icon.svg" id="2_vhbeh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
+size = Vector2(127, 126)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smx3j"]
-animations = []
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vhbeh")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="AirCan" type="Area2D" unique_id=1130188088]
 script = ExtResource("1_kuw68")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=271830832]
+position = Vector2(390.5, 299)
+scale = Vector2(0.72, 1)
+shape = SubResource("RectangleShape2D_wowpa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1668028251]
+position = Vector2(391, 299)
+scale = Vector2(0.72, 1)
 sprite_frames = SubResource("SpriteFrames_smx3j")
-animation = &""
+animation = &"idle"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
