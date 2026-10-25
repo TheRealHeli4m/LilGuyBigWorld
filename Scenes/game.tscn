@@ -1,21 +1,20 @@
 [gd_scene format=3 uid="uid://xj703g0kiwa4"]
 
+[ext_resource type="Texture2D" uid="uid://drnyv25illilw" path="res://Assets/kitchen_top.png" id="1_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://ci2yoqda0kved" path="res://Scenes/little_guy.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://bxnixtbrabwwv" path="res://Scenes/air_can.tscn" id="1_i6g32"]
 [ext_resource type="PackedScene" uid="uid://njdibrl2nvwm" path="res://Scenes/game_manager.tscn" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://hwf12e5a0c3f" path="res://Scenes/killzone.tscn" id="3_wrm1d"]
 [ext_resource type="Script" uid="uid://ckx6wi3itw8ix" path="res://Scenes/camera.gd" id="4_1l0tm"]
 [ext_resource type="Script" uid="uid://dtuh8twxmhagj" path="res://Scripts/pause_menu_bg.gd" id="4_3dryh"]
+[ext_resource type="Texture2D" uid="uid://cy7alggvuw8vw" path="res://Assets/resume_button.png" id="7_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://ccgnihubgyhnj" path="res://Assets/settings.png" id="8_o5yvi"]
+[ext_resource type="Script" uid="uid://dttftu4eht7jh" path="res://Scenes/button.gd" id="8_rku1e"]
+[ext_resource type="Texture2D" uid="uid://dasf2d25t1mdp" path="res://Assets/return.png" id="9_rku1e"]
+[ext_resource type="Texture2D" uid="uid://ciilcu05d6elq" path="res://Assets/pause.png" id="11_rku1e"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cqgho"]
 distance = -52.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd33c"]
-content_margin_left = 50.0
-content_margin_top = 25.0
-content_margin_right = 50.0
-content_margin_bottom = 25.0
-bg_color = Color(0.08274146, 0.08274145, 0.0827414, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cd33c"]
 
@@ -23,18 +22,18 @@ bg_color = Color(0.08274146, 0.08274145, 0.0827414, 1)
 position = Vector2(-1, 1)
 
 [node name="AirCan" parent="." unique_id=1130188088 instance=ExtResource("1_i6g32")]
-position = Vector2(-136, -348)
+position = Vector2(-132, -449)
 
 [node name="GameManager" parent="." unique_id=1534931396 instance=ExtResource("1_wowpa")]
 unique_name_in_owner = true
 
 [node name="LittleGuy" parent="." unique_id=1827910594 instance=ExtResource("1_ebmjs")]
-position = Vector2(10, -112)
+position = Vector2(18, -297)
 
 [node name="Camera2D" type="Camera2D" parent="LittleGuy" unique_id=704258411]
 position = Vector2(1, 0)
+zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
-position_smoothing_enabled = true
 script = ExtResource("4_1l0tm")
 
 [node name="Killzone" parent="." unique_id=627309802 instance=ExtResource("3_wrm1d")]
@@ -54,42 +53,58 @@ grow_vertical = 2
 color = Color(0.20511743, 0.20511743, 0.20511743, 0.39215687)
 script = ExtResource("4_3dryh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=181255018]
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -206.0
-offset_right = 206.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
+[node name="Node2D" type="Node2D" parent="PauseMenu" unique_id=1874747827]
+position = Vector2(48, 64)
 
-[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/VBoxContainer" unique_id=357557006]
-layout_mode = 2
-theme_override_constants/margin_top = 250
+[node name="Resume" type="TextureButton" parent="PauseMenu/Node2D" unique_id=1076175505]
+offset_left = 61.0
+offset_top = 199.0
+offset_right = 93.0
+offset_bottom = 231.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("7_ldgsr")
+script = ExtResource("8_rku1e")
 
-[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer" unique_id=2103524191]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_cd33c")
-text = "Resume"
+[node name="Settings" type="TextureButton" parent="PauseMenu/Node2D" unique_id=725551003]
+offset_left = 60.0
+offset_top = 345.0
+offset_right = 92.0
+offset_bottom = 377.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("8_o5yvi")
+script = ExtResource("8_rku1e")
 
-[node name="Settings" type="Button" parent="PauseMenu/VBoxContainer" unique_id=550075613]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_cd33c")
-text = "Settings
-"
+[node name="Quit" type="TextureButton" parent="PauseMenu/Node2D" unique_id=1690179200]
+offset_left = 60.0
+offset_top = 491.0
+offset_right = 92.0
+offset_bottom = 523.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("9_rku1e")
+script = ExtResource("8_rku1e")
 
-[node name="Quit" type="Button" parent="PauseMenu/VBoxContainer" unique_id=671311646]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_cd33c")
-text = "Return to Main Menu"
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu" unique_id=1246568166]
+position = Vector2(762, 296)
+scale = Vector2(6, 6)
+texture = ExtResource("11_rku1e")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=990472971]
-position = Vector2(-1, 65)
+position = Vector2(-6, -186)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=600412735]
+position = Vector2(7, 188)
 shape = SubResource("WorldBoundaryShape2D_cd33c")
 
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="PauseMenu/Bg" method="_on_resume_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Quit" to="PauseMenu/Bg" method="_on_quit_pressed"]
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1845477899]
+position = Vector2(13, -485)
+scale = Vector2(16, 16)
+texture = ExtResource("1_1l0tm")
+
+[connection signal="mouse_entered" from="PauseMenu/Node2D/Resume" to="PauseMenu/Node2D/Resume" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PauseMenu/Node2D/Resume" to="PauseMenu/Node2D/Resume" method="_on_mouse_exited"]
+[connection signal="pressed" from="PauseMenu/Node2D/Resume" to="PauseMenu/Bg" method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/Node2D/Settings" to="PauseMenu/Node2D/Settings" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PauseMenu/Node2D/Settings" to="PauseMenu/Node2D/Settings" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="PauseMenu/Node2D/Quit" to="PauseMenu/Node2D/Quit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PauseMenu/Node2D/Quit" to="PauseMenu/Node2D/Quit" method="_on_mouse_exited"]
+[connection signal="pressed" from="PauseMenu/Node2D/Quit" to="PauseMenu/Bg" method="_on_quit_pressed"]
