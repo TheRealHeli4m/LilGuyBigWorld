@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://b7makj3y0fap0"]
+
+[ext_resource type="Texture2D" uid="uid://dr3o00ajwrsw8" path="res://Assets/main_menu_bg.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dstnkak3if3tl" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://dsfnkon5bfl7e" path="res://Assets/play.png" id="3_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://3auu0crhjh46" path="res://Assets/sprites/Untitled313_20261024224732.png" id="3_qe12f"]
+[ext_resource type="Texture2D" uid="uid://by2ln5dgd1xx4" path="res://Assets/title.png" id="4_8qtwp"]
+[ext_resource type="Script" uid="uid://d0cdgtln32pyc" path="res://play_button.gd" id="4_jix8l"]
+[ext_resource type="Texture2D" uid="uid://ty5sinjflxyf" path="res://Assets/arrow.png" id="5_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://drn7x27etyecm" path="res://Assets/exit.png" id="5_glbon"]
+[ext_resource type="Texture2D" uid="uid://3h01sdjfk8ij" path="res://Assets/exit_sad.png" id="6_nlkkf"]
+
+[sub_resource type="Animation" id="Animation_fu7sn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7vrkn"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jix8l"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fu7sn"]
+_data = {
+&"RESET": SubResource("Animation_fu7sn"),
+&"fade_in": SubResource("Animation_7vrkn"),
+&"fade_out": SubResource("Animation_jix8l")
+}
+
+[node name="Main Menu" type="Node2D" unique_id=688318407]
+script = ExtResource("1_7vrkn")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=26413726]
+position = Vector2(640, 371)
+scale = Vector2(4, 4)
+texture = ExtResource("1_06t4h")
+
+[node name="Liam" type="Sprite2D" parent="." unique_id=1893792199]
+texture_filter = 2
+position = Vector2(928, 540)
+texture = ExtResource("3_qe12f")
+flip_h = true
+
+[node name="Title" type="Sprite2D" parent="." unique_id=1256778108]
+position = Vector2(935, 153)
+scale = Vector2(8, 8)
+texture = ExtResource("4_8qtwp")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=298800859]
+position = Vector2(1124, 393)
+scale = Vector2(8, 8)
+texture = ExtResource("5_dy7ct")
+
+[node name="Button" type="TextureButton" parent="." unique_id=232670605]
+offset_left = 301.0
+offset_top = 296.0
+offset_right = 365.0
+offset_bottom = 328.0
+scale = Vector2(8, 8)
+texture_normal = ExtResource("3_fu7sn")
+script = ExtResource("4_jix8l")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=283561923]
+offset_left = 76.0
+offset_top = 473.0
+offset_right = 124.0
+offset_bottom = 489.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("5_glbon")
+texture_hover = ExtResource("6_nlkkf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=622122339]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=672614239]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=596131128]
+libraries/ = SubResource("AnimationLibrary_fu7sn")
+
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

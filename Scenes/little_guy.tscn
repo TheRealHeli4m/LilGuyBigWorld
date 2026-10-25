@@ -1,77 +1,100 @@
 [gd_scene format=3 uid="uid://ci2yoqda0kved"]
 
 [ext_resource type="Script" uid="uid://dlqqsdf8f5v2" path="res://Scripts/little_guy.gd" id="1_4lbe5"]
-[ext_resource type="Texture2D" uid="uid://bjlyccw3a3cri" path="res://Assets/sprites/knight.png" id="2_p2ue5"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qcms7"]
-atlas = ExtResource("2_p2ue5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4lbe5"]
-atlas = ExtResource("2_p2ue5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_golc8"]
-atlas = ExtResource("2_p2ue5")
-region = Rect2(64, 224, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkw2r"]
-atlas = ExtResource("2_p2ue5")
-region = Rect2(0, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://3auu0crhjh46" path="res://Assets/sprites/Untitled313_20261024224732.png" id="2_f4ci3"]
+[ext_resource type="Texture2D" uid="uid://wiiygw5ll20h" path="res://Assets/Untitled313_20261023215736.png" id="3_f4ci3"]
+[ext_resource type="Texture2D" uid="uid://b0nygb8b3w1cq" path="res://Assets/Untitled313_20261023215742.png" id="4_6paws"]
+[ext_resource type="Texture2D" uid="uid://cngrpeyx4kffo" path="res://Assets/Untitled313_20261023215747.png" id="5_b0b7f"]
+[ext_resource type="Texture2D" uid="uid://bbotnxl0anfkd" path="res://Assets/Untitled313_20261023215752.png" id="6_he0px"]
+[ext_resource type="Texture2D" uid="uid://0y31svpfj7w0" path="res://Assets/Untitled313_20261023215759.png" id="7_ynjxm"]
+[ext_resource type="Texture2D" uid="uid://dvts0jiomgvui" path="res://Assets/sprites/Untitled313_20261024225115.png" id="8_f4ci3"]
+[ext_resource type="Texture2D" uid="uid://bw1sj8x2ye71g" path="res://Assets/sprites/Untitled313_20261024225205.png" id="9_6paws"]
+[ext_resource type="Texture2D" uid="uid://y365upbh656k" path="res://Assets/sprites/Untitled313_20261024225243.png" id="10_b0b7f"]
+[ext_resource type="Texture2D" uid="uid://dtmdignhx7etm" path="res://Assets/sprites/Untitled313_20261024225300.png" id="11_he0px"]
+[ext_resource type="Texture2D" uid="uid://bmhcckav4jyef" path="res://Assets/sprites/Untitled313_20261024225325.png" id="12_ynjxm"]
+[ext_resource type="Texture2D" uid="uid://bq8tqpd82qruw" path="res://Assets/sprites/Untitled313_20261024225342.png" id="13_60npq"]
+[ext_resource type="Script" uid="uid://coaunrjlguhv3" path="res://Scripts/player_animations.gd" id="15_6paws"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cqgho"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qcms7")
+"texture": ExtResource("2_f4ci3")
 }],
 "loop": 1,
 "name": &"Idle",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": 1,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_f4ci3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6paws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b0b7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_he0px")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ynjxm")
+}],
+"loop": 0,
 "name": &"Jump",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4lbe5")
+"texture": ExtResource("8_f4ci3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6paws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b0b7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_he0px")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ynjxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_60npq")
 }],
 "loop": 1,
 "name": &"Run",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [],
 "loop": 1,
 "name": &"RunJump",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_golc8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jkw2r")
-}],
+"frames": [],
 "loop": 0,
 "name": &"Squash",
 "speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqgho"]
-size = Vector2(8, 12)
+size = Vector2(52, 204)
 
 [node name="LittleGuy" type="CharacterBody2D" unique_id=1827910594]
 script = ExtResource("1_4lbe5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=842026339]
+texture_filter = 2
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_cqgho")
-animation = &"Squash"
+animation = &"Run"
 autoplay = "Idle"
+script = ExtResource("15_6paws")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=941323162]
-position = Vector2(0, 4)
+position = Vector2(3, -4)
 shape = SubResource("RectangleShape2D_cqgho")
 
 [node name="JumpBuffering" type="Timer" parent="." unique_id=2064193373]

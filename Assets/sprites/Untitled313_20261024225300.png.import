@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjlyccw3a3cri"
-path="res://.godot/imported/knight.png-f2df08b890c4ea830c735d8e0f73a8e2.ctex"
+uid="uid://dtmdignhx7etm"
+path="res://.godot/imported/Untitled313_20261024225300.png-0eb437ad1f29a05799ebae9101f1ff5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/knight.png"
-dest_files=["res://.godot/imported/knight.png-f2df08b890c4ea830c735d8e0f73a8e2.ctex"]
+source_file="res://Assets/sprites/Untitled313_20261024225300.png"
+dest_files=["res://.godot/imported/Untitled313_20261024225300.png-0eb437ad1f29a05799ebae9101f1ff5b.ctex"]
 
 [params]
 
@@ -36,5 +36,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=512
 detect_3d/compress_to=1
