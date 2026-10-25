@@ -10,6 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not Global.playerCanMove: return
+	
 	if not player.is_on_floor():
 		isJumping = true
 	else:

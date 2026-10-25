@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://drnyv25illilw" path="res://Assets/kitchen_top.png" id="1_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://ci2yoqda0kved" path="res://Scenes/little_guy.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://bxnixtbrabwwv" path="res://Scenes/air_can.tscn" id="1_i6g32"]
+[ext_resource type="Script" uid="uid://lluefl2pbn5r" path="res://Scenes/game.gd" id="1_rfjv2"]
 [ext_resource type="PackedScene" uid="uid://njdibrl2nvwm" path="res://Scenes/game_manager.tscn" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://hwf12e5a0c3f" path="res://Scenes/killzone.tscn" id="3_wrm1d"]
 [ext_resource type="Script" uid="uid://ckx6wi3itw8ix" path="res://Scenes/camera.gd" id="4_1l0tm"]
@@ -18,8 +19,63 @@ distance = -52.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cd33c"]
 
+[sub_resource type="Animation" id="Animation_fu7sn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7vrkn"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jix8l"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1phco"]
+_data = {
+&"RESET": SubResource("Animation_fu7sn"),
+&"fade_in": SubResource("Animation_7vrkn"),
+&"fade_out": SubResource("Animation_jix8l")
+}
+
 [node name="Game" type="Node2D" unique_id=873701970]
 position = Vector2(-1, 1)
+script = ExtResource("1_rfjv2")
 
 [node name="AirCan" parent="." unique_id=1130188088 instance=ExtResource("1_i6g32")]
 position = Vector2(-132, -449)
@@ -99,6 +155,22 @@ shape = SubResource("WorldBoundaryShape2D_cd33c")
 position = Vector2(13, -485)
 scale = Vector2(16, 16)
 texture = ExtResource("1_1l0tm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1983057033]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1323391053]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1426461185]
+libraries/ = SubResource("AnimationLibrary_1phco")
 
 [connection signal="mouse_entered" from="PauseMenu/Node2D/Resume" to="PauseMenu/Node2D/Resume" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PauseMenu/Node2D/Resume" to="PauseMenu/Node2D/Resume" method="_on_mouse_exited"]
