@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://bgukwqioee1ly"]
 
 [ext_resource type="Script" uid="uid://cawqj8rfknagw" path="res://Scripts/collectable.gd" id="1_3rsma"]
+[ext_resource type="Texture2D" uid="uid://b0tspj2kg36w2" path="res://Assets/Untitled_Artwork 8.png" id="2_licok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85qyi"]
 
 [node name="Collectable" type="Area2D" unique_id=2102559321]
 script = ExtResource("1_3rsma")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=954030049]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=575796049]
+shape = SubResource("RectangleShape2D_85qyi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1812266739]
+position = Vector2(3.9999962, 0.50000477)
+scale = Vector2(0.060546868, 0.0600586)
+texture = ExtResource("2_licok")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -93,7 +93,7 @@ animation = &"Run"
 autoplay = "Idle"
 script = ExtResource("15_6paws")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=941323162]
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=941323162]
 position = Vector2(3, -4)
 shape = SubResource("RectangleShape2D_cqgho")
 
